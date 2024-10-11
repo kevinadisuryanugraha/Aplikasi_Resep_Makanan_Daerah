@@ -1,0 +1,55 @@
+# 📜 Aplikasi Resep Makanan Daerah 🍽️
+
+Selamat datang di **Aplikasi Resep Makanan Daerah**! 🎉  
+Aplikasi ini menyajikan berbagai resep makanan tradisional dari berbagai daerah di Indonesia. Mulai dari cara membuat hingga tips-tips khusus yang bisa membantu kamu menciptakan sajian lezat khas Nusantara di dapurmu! 🌶️🍚
+
+## 🚀 Fitur Utama
+
+- **Resep Tradisional**: Tersedia berbagai resep dari berbagai daerah dengan langkah-langkah yang jelas dan mudah diikuti.
+- **Tampilan Interaktif**: Antarmuka yang sederhana namun menarik untuk pengalaman pengguna yang menyenangkan.
+- **Penyimpanan Data**: Simpan dan kelola data resep menggunakan teknologi **SQLite**.
+
+## 📚 Teknologi yang Digunakan
+
+Proyek ini dibangun menggunakan teknologi-teknologi berikut:
+
+- **HTML5**: Untuk struktur halaman aplikasi.
+- **CSS3**: Untuk styling yang membuat aplikasi lebih menarik dan responsif.
+- **PHP**: Untuk logika backend dan pengelolaan data resep.
+- **SQLite**: Sebagai database untuk menyimpan data resep makanan daerah.
+
+## 💻 Dokumentasi
+
+Ini adalah halaman ketika pengguna masuk pertama kali ke aplikasi ini, yang dimana pengguna akan diarahkan untuk memasukkan nama lengkap dan juga email.
+
+![Logo Proyek](image_readme/index.png)
+
+--------------------------------------------------------
+
+Ini adalah halaman Resep, yang dimana pengguna bisa melihat semua resep yang ditambahkan oleh pengguna lain, dan pengguna juga bisa menambahkan, mengedit, dan menghapus resepnya sendiri.
+
+![Logo Proyek](image_readme/Resep.png)
+
+--------------------------------------------------------
+
+Ini adalah halaman Tambah Resep, yang dimana pengguna bisa menambahkan Resepnya sendiri agar bisa dilihat orang lain.
+
+![Logo Proyek](image_readme/add.png)
+
+--------------------------------------------------------
+
+Ini adalah halaman Edit Resep, yang dimana pengguna bisa mengedit atau memperbarui kembali resep yang sudah ditambahkannya.
+
+![Logo Proyek](image_readme/edit.png)
+
+--------------------------------------------------------
+
+Ini adalah halaman detail resep, yang dimana pengguna bisa melihat Resep lebih detail dan terperinci.
+
+![Logo Proyek](image_readme/detail.png)
+
+--------------------------------------------------------
+
+#  🙏🏻Terimakasih Sudah Berkunjung 🙏🏻
+
+Jangan lupa untuk follow dan likenya juga ya teman - teman 😎
