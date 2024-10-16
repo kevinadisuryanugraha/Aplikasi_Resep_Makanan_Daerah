@@ -4,24 +4,42 @@ include 'db.php';
 include 'functions.php';
 
 if (isset($_GET['id'])) {
-    $resep = get_resep_by_id($_GET['id']);
+    $id = $_GET['id'];
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $nama_resep = $_POST['nama_resep'];
-        $description = $_POST['description'];
-        $daerah = $_POST['daerah'];
-        $bahan = $_POST['bahan'];
-        $cara = $_POST['cara'];
-        $created_at = $_POST['created_at'];
-
-        update_resep($_GET['id'], $nama_resep, $description, $daerah, $bahan, $cara, $created_at);
-        header("Location: halaman_utama.php");
+    $resep = get_resep_by_id($id);
+    if (!$resep) {
+        echo "<script>alert('Resep tidak ditemukan.');
+        window.location='index.php';
+        </script>";
         exit;
     }
 } else {
-    header("Location: halaman_utama.php");
+    echo "<script>alert('ID resep tidak ditemukan.');
+    window.location='index.php';
+    </script>";
     exit;
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $foto = $_FILES['foto'];
+    $nama_resep = $_POST['nama_resep'];
+    $description = $_POST['description'];
+    $daerah = $_POST['daerah'];
+    $bahan = $_POST['bahan'];
+    $cara = $_POST['cara'];
+    $created_at = $_POST['created_at'];
+
+    $result = update_resep($id, $foto, $nama_resep, $description, $daerah, $bahan, $cara, $created_at);
+    if ($result) {
+        echo "<script>alert('Resep berhasil diperbarui.');
+        window.location='index.php';
+        </script>";
+    } else {
+        echo "Terjadi kesalahan saat memperbarui resep.";
+    }
+}
+?>
+
 ?>
 
 <!DOCTYPE html>
@@ -69,8 +87,10 @@ if (isset($_GET['id'])) {
             outline: none;
         }
 
+        .container .form form input[type="file"],
         .container .form form input[type="text"],
         .container .form form input[type="date"] {
+            background-color: white;
             width: 100%;
             padding: 0.5rem;
             margin-bottom: 1rem;
@@ -125,6 +145,10 @@ if (isset($_GET['id'])) {
             <div class="form">
                 <form action="" method="POST">
                     <div class="form-group">
+                        <label for="foto">Masukkan gambar</label><br>
+                        <input type="file" id="foto" name="foto" required autofocus>
+                    </div>
+                    <div class="form-group">
                         <label for="nama_resep">Nama Resep</label><br>
                         <input type="text" id="nama_resep" name="nama_resep" value="<?php echo htmlspecialchars($resep['nama_resep']); ?>" required>
                     </div>
@@ -152,7 +176,7 @@ if (isset($_GET['id'])) {
 
                     <div class="tombol">
                         <input type="submit" value="Edit Resep">
-                        <a href="halaman_utama.php">Kembali</a>
+                        <a href="index.php">Kembali</a>
                     </div>
                 </form>
             </div>

@@ -10,13 +10,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $cara = $_POST['cara'];
     $created_at = $_POST['created_at'];
 
-    if (add_resep($nama_resep, $description, $daerah, $bahan, $cara, $created_at)) {
-        header("Location: halaman_utama.php");
-        exit();
+    if (isset($_FILES['foto'])) {
+        $result = add_resep($_FILES['foto'], $nama_resep, $description, $daerah, $bahan, $cara, $created_at);
+
+        if ($result) {
+            echo "<script>alert('Resep Berhasil Ditambahkan');
+            window.location='index.php';
+            </script>";
+        } else {
+            echo "Terjadi kesalahan saat menambahkan Resep";
+        }
     } else {
-        echo "Gagal menambahkan resep. Coba lagi.";
+        echo "File gambar tidak ditemukan.";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +78,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .container .form form input[type="text"],
+        .container .form form input[type="file"],
         .container .form form input[type="date"] {
+            background-color: white;
             width: 100%;
             padding: 0.5rem;
             margin-bottom: 1rem;
@@ -123,7 +133,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h1>Tambah Resep Makanan</h1>
 
             <div class="form">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="foto">Masukkan gambar</label><br>
+                        <input type="file" id="foto" name="foto" required autofocus>
+                    </div>
                     <div class="form-group">
                         <label for="nama_resep">Nama Resep</label><br>
                         <input type="text" id="nama_resep" name="nama_resep" required>
@@ -151,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <div class="tombol">
                         <input type="submit" value="Tambah Resep">
-                        <a href="halaman_utama.php">Kembali</a>
+                        <a href="index.php">Kembali</a>
                     </div>
                 </form>
             </div>

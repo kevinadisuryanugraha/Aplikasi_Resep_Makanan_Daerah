@@ -82,7 +82,14 @@ if (!$resep) {
 
             <div class="card">
                 <h3>Nama Resep: <?php echo htmlspecialchars($resep['nama_resep']); ?></h3>
-                <span>Dibuat Tanggal: <?php echo htmlspecialchars($resep['created_at']); ?></span>
+                <span>Dibuat Tanggal: <?php echo date('d-m-Y', strtotime($resep['created_at'])); ?></span>
+
+
+                <div class="isi">
+                    <p>
+                        <strong>Gambar Makanan:</strong><br> <img src="uploads/makanan/<?php echo $resep['foto']; ?>" alt="Foto Resep" style="width: 100px;">
+                    </p>
+                </div>
 
                 <div class="isi">
                     <p>
@@ -103,7 +110,7 @@ if (!$resep) {
                 </div>
 
                 <div class="tombol">
-                    <a href="halaman_utama.php">Kembali</a>
+                    <a href="index.php">Kembali</a>
                 </div>
             </div>
         </div>

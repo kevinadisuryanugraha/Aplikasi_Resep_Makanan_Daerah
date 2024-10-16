@@ -35,7 +35,7 @@ if ($resep_list === false) {
         }
 
         .container .jumbotron {
-            max-width: 900px;
+            max-width: 950px;
             /* background-color: green; */
             height: 100vh;
             margin: auto;
@@ -129,6 +129,8 @@ if ($resep_list === false) {
                 <table>
                     <thead>
                         <tr>
+                            <th>No</th>
+                            <th>Gambar Makanan</th>
                             <th>Nama Resep</th>
                             <th>Daerah Khas</th>
                             <th>Tanggal Dibuat</th>
@@ -138,14 +140,16 @@ if ($resep_list === false) {
                     <tbody>
                         <?php if (empty($resep_list)): ?>
                             <tr>
-                                <td colspan="3">Tidak ada resep yang ditemukan.</td>
+                                <td colspan="6">Tidak ada resep yang ditemukan.</td>
                             </tr>
                         <?php else: ?>
-                            <?php foreach ($resep_list as $item): ?>
+                            <?php foreach ($resep_list as $index => $item): ?>
                                 <tr>
+                                    <td><?php echo $index + 1 ?></td>
+                                    <td><img src="uploads/makanan/<?php echo $item['foto']; ?>" alt="Foto item" style="width: 100px;"></td>
                                     <td><?php echo htmlspecialchars($item['nama_resep']); ?></td>
                                     <td><?php echo htmlspecialchars($item['daerah']); ?></td>
-                                    <td><?php echo htmlspecialchars($item['created_at']); ?></td>
+                                    <td><?php echo date('d-m-Y', strtotime($item['created_at'])); ?></td>
                                     <td>|
                                         <a href="detail_resep.php?id=<?php echo htmlspecialchars($item['id']); ?>">Detail</a>
                                         |
