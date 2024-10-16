@@ -22,25 +22,25 @@ Proyek ini dibangun menggunakan teknologi-teknologi berikut:
 
 Ini adalah halaman Resep, yang dimana pengguna bisa melihat semua resep, dan pengguna juga bisa menambahkan, mengedit, dan menghapus resepnya sendiri.
 
-
+![Logo Proyek](image_readme/index.png)
 
 --------------------------------------------------------
 
 Ini adalah halaman Tambah Resep, yang dimana pengguna bisa menambahkan Resepnya sendiri.
 
-
+![Logo Proyek](image_readme/add.png)
 
 --------------------------------------------------------
 
 Ini adalah halaman Edit Resep, yang dimana pengguna bisa mengedit atau memperbarui kembali resep yang sudah ditambahkannya.
 
-
+![Logo Proyek](image_readme/edit.png)
 
 --------------------------------------------------------
 
 Ini adalah halaman detail resep, yang dimana pengguna bisa melihat Resep lebih detail dan terperinci.
 
-
+![Logo Proyek](image_readme/detail.png)
 
 -------------------------------------------------------- 
 
