@@ -2,14 +2,6 @@
 session_start();
 require_once 'functions.php';
 
-if (!isset($_SESSION['nama']) || !isset($_SESSION['email'])) {
-    header("Location: index.php");
-    exit();
-}
-
-$user_name = $_SESSION['nama'];
-$user_email = $_SESSION['email'];
-
 $resep_list = get_all_resep();
 
 if ($resep_list === false) {
@@ -129,9 +121,7 @@ if ($resep_list === false) {
             <div class="navigasi">
                 <h3>Daftar Resep</h3>
                 <div class="link-navigasi">
-                    <span>Selamat Datang <?php echo $user_name ?>!</span>
                     <a href="tambah_resep.php">Tambah Resep</a>
-                    <a href="logout.php">Logout</a>
                 </div>
             </div>
 
@@ -141,7 +131,7 @@ if ($resep_list === false) {
                         <tr>
                             <th>Nama Resep</th>
                             <th>Daerah Khas</th>
-                            <th>Pembuat</th>
+                            <th>Tanggal Dibuat</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -155,16 +145,14 @@ if ($resep_list === false) {
                                 <tr>
                                     <td><?php echo htmlspecialchars($item['nama_resep']); ?></td>
                                     <td><?php echo htmlspecialchars($item['daerah']); ?></td>
-                                    <td><?php echo htmlspecialchars($item['created_by']); ?></td>
+                                    <td><?php echo htmlspecialchars($item['created_at']); ?></td>
                                     <td>|
                                         <a href="detail_resep.php?id=<?php echo htmlspecialchars($item['id']); ?>">Detail</a>
                                         |
-                                        <?php if ($item['created_by'] === $user_name): ?>
-                                            <a id="edit" href="edit_resep.php?id=<?php echo htmlspecialchars($item['id']); ?>"><i class="fa-regular fa-pen-to-square"></i></a>
-                                            |
-                                            <a id="Hapus" href="delete_resep.php?id=<?php echo htmlspecialchars($item['id']); ?>" onclick="return confirm('Anda yakin ingin menghapus resep ini?');"><i class="fa-solid fa-trash"></i></a>
-                                            |
-                                        <?php endif; ?>
+                                        <a id="edit" href="edit_resep.php?id=<?php echo htmlspecialchars($item['id']); ?>"><i class="fa-regular fa-pen-to-square"></i></a>
+                                        |
+                                        <a id="Hapus" href="delete_resep.php?id=<?php echo htmlspecialchars($item['id']); ?>" onclick="return confirm('Anda yakin ingin menghapus resep ini?');"><i class="fa-solid fa-trash"></i></a>
+                                        |
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

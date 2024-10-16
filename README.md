@@ -20,19 +20,13 @@ Proyek ini dibangun menggunakan teknologi-teknologi berikut:
 
 ## 💻 Dokumentasi
 
-Ini adalah halaman ketika pengguna masuk pertama kali ke aplikasi ini, yang dimana pengguna akan diarahkan untuk memasukkan nama lengkap dan juga email.
+Ini adalah halaman Resep, yang dimana pengguna bisa melihat semua resep, dan pengguna juga bisa menambahkan, mengedit, dan menghapus resepnya sendiri.
 
 ![Logo Proyek](image_readme/index.png)
 
 --------------------------------------------------------
 
-Ini adalah halaman Resep, yang dimana pengguna bisa melihat semua resep yang ditambahkan oleh pengguna lain, dan pengguna juga bisa menambahkan, mengedit, dan menghapus resepnya sendiri.
-
-![Logo Proyek](image_readme/Resep.png)
-
---------------------------------------------------------
-
-Ini adalah halaman Tambah Resep, yang dimana pengguna bisa menambahkan Resepnya sendiri agar bisa dilihat orang lain.
+Ini adalah halaman Tambah Resep, yang dimana pengguna bisa menambahkan Resepnya sendiri.
 
 ![Logo Proyek](image_readme/add.png)
 

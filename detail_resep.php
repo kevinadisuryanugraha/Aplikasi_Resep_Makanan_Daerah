@@ -2,11 +2,6 @@
 session_start();
 require_once 'functions.php';
 
-if (!isset($_SESSION['nama']) || !isset($_SESSION['email'])) {
-    header("Location: index.php");
-    exit();
-}
-
 if (!isset($_GET['id'])) {
     echo "<p>ID resep tidak valid.</p>";
     exit();
@@ -86,8 +81,8 @@ if (!$resep) {
             <h1>Resep Makanan Cepat Saji</h1>
 
             <div class="card">
-                <h3>Nama Resep: LonTong Sayur</h3>
-                <span>Pembuat: <?php echo htmlspecialchars($resep['created_by']); ?></span>
+                <h3>Nama Resep: <?php echo htmlspecialchars($resep['nama_resep']); ?></h3>
+                <span>Dibuat Tanggal: <?php echo htmlspecialchars($resep['created_at']); ?></span>
 
                 <div class="isi">
                     <p>

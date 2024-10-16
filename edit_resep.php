@@ -6,19 +6,15 @@ include 'functions.php';
 if (isset($_GET['id'])) {
     $resep = get_resep_by_id($_GET['id']);
 
-    if ($resep && $resep['created_by'] != $_SESSION['nama']) {
-        header("Location: halaman_utama.php");
-        exit;
-    }
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nama_resep = $_POST['nama_resep'];
         $description = $_POST['description'];
         $daerah = $_POST['daerah'];
         $bahan = $_POST['bahan'];
         $cara = $_POST['cara'];
+        $created_at = $_POST['created_at'];
 
-        update_resep($_GET['id'], $nama_resep, $description, $daerah, $bahan, $cara);
+        update_resep($_GET['id'], $nama_resep, $description, $daerah, $bahan, $cara, $created_at);
         header("Location: halaman_utama.php");
         exit;
     }
@@ -73,7 +69,8 @@ if (isset($_GET['id'])) {
             outline: none;
         }
 
-        .container .form form input[type="text"] {
+        .container .form form input[type="text"],
+        .container .form form input[type="date"] {
             width: 100%;
             padding: 0.5rem;
             margin-bottom: 1rem;
@@ -146,6 +143,11 @@ if (isset($_GET['id'])) {
                     <div class="form-group">
                         <label for="cara">Cara Memasak</label><br>
                         <textarea id="cara" name="cara" required><?php echo htmlspecialchars($resep['cara']); ?></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="created_at">Dibuat Tanggal:</label><br>
+                        <input type="date" id="created_at" name="created_at" value="<?php echo htmlspecialchars($resep['created_at']); ?>" required>
                     </div>
 
                     <div class="tombol">
