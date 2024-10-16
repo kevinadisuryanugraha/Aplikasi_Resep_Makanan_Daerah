@@ -42,7 +42,7 @@ Ini adalah halaman detail resep, yang dimana pengguna bisa melihat Resep lebih d
 
 ![Logo Proyek](image_readme/detail.png)
 
---------------------------------------------------------
+-------------------------------------------------------- 
 
 #  🙏🏻Terimakasih Sudah Berkunjung 🙏🏻
 
