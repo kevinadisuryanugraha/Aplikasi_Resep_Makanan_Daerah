@@ -2,20 +2,25 @@
 require_once 'functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
 
-    $result = login_user($email, $password);
-
-    if ($result === true) {
-        $success_message = "Login berhasil. Redirecting...";
-        header("Location: dashboard.php");
-        exit();
+    if ($password !== $confirm_password) {
+        $error_message = "Password dan konfirmasi password tidak cocok.";
     } else {
-        $error_message = $result;
+        $result = register_user($username, $email, $password);
+
+        if ($result === true) {
+            $success_message = "Registrasi berhasil. Silakan login.";
+            header("Location: index.php");
+            exit();
+        } else {
+            $error_message = $result;
+        }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Aplikasi Resep Makanan</title>
+    <title>Register - Aplikasi Resep Makanan</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -94,17 +99,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background: #e1554e;
         }
 
-        .register-link {
+        .login-link {
             margin-top: 1rem;
         }
 
-        .register-link a {
+        .login-link a {
             color: #ff6f61;
             text-decoration: none;
             font-weight: bold;
         }
 
-        .register-link a:hover {
+        .login-link a:hover {
             text-decoration: underline;
         }
 
@@ -125,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <div class="container">
-        <h2>Login</h2>
+        <h2>Register</h2>
         <?php if (isset($error_message)): ?>
             <div class="message error"><?= $error_message ?></div>
         <?php endif; ?>
@@ -134,6 +139,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
         <form method="POST">
             <div class="form-group">
+                <label>Username:</label>
+                <input type="text" name="username" placeholder="Masukkan username Anda" required>
+            </div>
+            <div class="form-group">
                 <label>Email:</label>
                 <input type="email" name="email" placeholder="Masukkan email Anda" required>
             </div>
@@ -141,10 +150,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label>Password:</label>
                 <input type="password" name="password" placeholder="Masukkan password" required>
             </div>
-            <button type="submit" class="btn">Login</button>
+            <div class="form-group">
+                <label>Konfirmasi Password:</label>
+                <input type="password" name="confirm_password" placeholder="Ulangi password Anda" required>
+            </div>
+            <button type="submit" class="btn">Daftar</button>
         </form>
-        <div class="register-link">
-            <p>Belum punya akun? <a href="register.php">Daftar di sini</a></p>
+        <div class="login-link">
+            <p>Sudah punya akun? <a href="index.php">Login di sini</a></p>
         </div>
     </div>
 </body>

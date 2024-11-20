@@ -2,6 +2,11 @@
 session_start();
 require_once 'functions.php';
 
+if (!isset($_SESSION['user_id'])) {
+    header('Location: index.php');
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nama_resep = $_POST['nama_resep'];
     $description = $_POST['description'];
@@ -15,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($result) {
             echo "<script>alert('Resep Berhasil Ditambahkan');
-            window.location='index.php';
+            window.location='dashboard.php';
             </script>";
         } else {
             echo "Terjadi kesalahan saat menambahkan Resep";
@@ -75,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <div class="tombol">
                         <input type="submit" value="Tambah Resep">
-                        <a href="index.php">Kembali</a>
+                        <a href="dashboard.php">Kembali</a>
                     </div>
                 </form>
             </div>

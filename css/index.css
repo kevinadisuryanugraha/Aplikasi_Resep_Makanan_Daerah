@@ -23,7 +23,6 @@ body {
 }
 
 .container .jumbotron .navigasi {
-    justify-content: space-between;
     display: flex;
     padding: 1rem 0rem;
 }

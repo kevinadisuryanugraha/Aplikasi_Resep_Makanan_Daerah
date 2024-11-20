@@ -3,6 +3,11 @@ session_start();
 include 'db.php';
 include 'functions.php';
 
+if (!isset($_SESSION['user_id'])) {
+    header('Location: index.php');
+    exit();
+}
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
@@ -38,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Terjadi kesalahan saat memperbarui resep.";
     }
 }
-?>
 
 ?>
 
@@ -91,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <div class="tombol">
                         <input type="submit" value="Edit Resep">
-                        <a href="index.php">Kembali</a>
+                        <a href="dashboard.php">Kembali</a>
                     </div>
                 </form>
             </div>

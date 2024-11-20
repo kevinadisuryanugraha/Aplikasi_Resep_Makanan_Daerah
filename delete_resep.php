@@ -8,5 +8,5 @@ if (isset($_GET['id'])) {
     delete_resep($_GET['id']);
 }
 
-header("Location: index.php");
+header("Location: dashboard.php");
 exit;

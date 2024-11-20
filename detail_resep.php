@@ -2,13 +2,17 @@
 session_start();
 require_once 'functions.php';
 
+if (!isset($_SESSION['user_id'])) {
+    header('Location: index.php');
+    exit();
+}
+
 if (!isset($_GET['id'])) {
     echo "<p>ID resep tidak valid.</p>";
     exit();
 }
 
 $id_resep = $_GET['id'];
-
 $resep = get_resep_by_id($id_resep);
 
 if (!$resep) {
@@ -63,7 +67,7 @@ if (!$resep) {
                 </div>
 
                 <div class="tombol">
-                    <a href="index.php">Kembali</a>
+                    <a href="dashboard.php">Kembali</a>
                 </div>
             </div>
         </div>
