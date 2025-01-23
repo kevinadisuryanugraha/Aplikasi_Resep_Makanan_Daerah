@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = update_resep($id, $foto, $nama_resep, $description, $daerah, $bahan, $cara, $created_at);
     if ($result) {
         echo "<script>alert('Resep berhasil diperbarui.');
-        window.location='index.php';
+        window.location='dashboard.php';
         </script>";
     } else {
         echo "Terjadi kesalahan saat memperbarui resep.";

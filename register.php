@@ -13,8 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = register_user($username, $email, $password);
 
         if ($result === true) {
-            $success_message = "Registrasi berhasil. Silakan login.";
-            header("Location: index.php");
+            echo "<script>alert('Registrasi berhasil, Silahkan Login.'); window.location.href='index.php';</script>";
             exit();
         } else {
             $error_message = $result;
@@ -33,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: url('https://via.placeholder.com/1920x1080?text=Food+Background') no-repeat center center/cover;
+            background: url('./image/bg.png') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -133,9 +132,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h2>Register</h2>
         <?php if (isset($error_message)): ?>
             <div class="message error"><?= $error_message ?></div>
-        <?php endif; ?>
-        <?php if (isset($success_message)): ?>
-            <div class="message success"><?= $success_message ?></div>
         <?php endif; ?>
         <form method="POST">
             <div class="form-group">

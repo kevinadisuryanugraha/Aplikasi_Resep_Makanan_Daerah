@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: url('https://via.placeholder.com/1920x1080?text=Food+Background') no-repeat center center/cover;
+            background: url('./image/bg.png') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
